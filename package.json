@@ -1,0 +1,26 @@
+{
+    "name": "taco",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc -b && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@vueuse/core": "^10.11.0",
+        "animate.css": "^4.1.1",
+        "element-plus": "^2.7.6",
+        "sass": "^1.77.6",
+        "vue": "^3.4.29",
+        "vue-router": "^4.4.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.5",
+        "typescript": "^5.2.2",
+        "vite": "^5.3.1",
+        "vite-plugin-vue-devtools": "^7.3.4",
+        "vue-tsc": "^2.0.21"
+    }
+}
