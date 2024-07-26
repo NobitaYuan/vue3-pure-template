@@ -1,7 +1,7 @@
 # Vue3 快速启动模板
 
 
--   [x] ⚡ Vue3 + Ts + Vite5 构建
+-   [x] ⚡ Vue3 + TypeScript5 + Vite5 构建
 -   [x] ✨ Element-plus
 -   [x] 🎀 Eslint + Prettier 代码规范化
 -   [x] 📝 集成 Commitizen、cz-git，Git提交信息规范化
