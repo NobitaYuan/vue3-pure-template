@@ -2,9 +2,9 @@
 import { useIntersectionObserver } from '@vueuse/core';
 import { ref } from 'vue';
 interface IProps {
-    animateCalss?: string;
-    duration?: string;
-    once?: boolean;
+    animateCalss?: string; // 配合animate.css使用，效果更佳
+    duration?: string; // 动画持续时间
+    once?: boolean; // 动画是否只播放一次
 }
 const Props = withDefaults(defineProps<IProps>(), {
     animateCalss: 'rise_up',
@@ -24,13 +24,13 @@ const { stop } = useIntersectionObserver(containerBox, ([{ isIntersecting }]) =>
 </script>
 
 <template>
-    <div class="containerBox" :class="show ? Props.animateCalss : ''" ref="containerBox">
+    <div class="viewport_animation_container" :class="show ? Props.animateCalss : ''" ref="containerBox">
         <slot></slot>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.containerBox {
+.viewport_animation_container {
 }
 .rise_up {
     --animate-duration: v-bind(Props.duration);

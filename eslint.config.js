@@ -13,6 +13,7 @@ export default [
     },
     ...tseslint.configs.recommended,
     ...pluginVue.configs['flat/essential'],
+    { extends: [] },
     {
         /* 自定义规则
         "off"   或者 0  //关闭规则

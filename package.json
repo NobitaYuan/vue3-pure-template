@@ -1,5 +1,5 @@
 {
-    "name": "taco",
+    "name": "vue3-start-template",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -29,13 +29,16 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.5",
+        "autoprefixer": "^10.4.19",
         "cz-git": "^1.7.1",
         "eslint": "9.x",
         "eslint-plugin-vue": "^9.26.0",
         "globals": "^15.6.0",
         "husky": "^9.1.2",
         "lint-staged": "^15.2.7",
+        "postcss": "^8.4.40",
         "prettier": "3.3.3",
+        "tailwindcss": "^3.4.7",
         "typescript": "^5.2.2",
         "typescript-eslint": "^7.14.1",
         "vite": "^5.3.1",
