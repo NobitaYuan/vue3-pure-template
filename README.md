@@ -9,3 +9,5 @@
 -   [x] ⬆️ 集成 Husky、lint-staged，提交代码自动格式化
 -   [x] ☁️ Tailwind CSS
 -   [x] ⚙️ Vue DevTools集成，Vue专属高效开发工具
+-   [x] 🛠️ VueUse
+-   [x] 🔗 Axios
