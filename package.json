@@ -4,8 +4,10 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vue-tsc -b && vite build",
+        "dev": "vite --mode development",
+        "build-dev": "vite build --mode development",
+        "build-test": "vite build --mode test",
+        "build-pro": "vite build  --mode production",
         "preview": "vite preview",
         "cz": "cz",
         "prepare": "husky"
@@ -24,8 +26,10 @@
         "axios": "^1.7.2",
         "commitizen": "^4.3.0",
         "element-plus": "^2.7.6",
+        "pinia": "^2.1.7",
         "sass": "^1.77.6",
         "vue": "^3.4.29",
+        "vue-i18n": "9",
         "vue-router": "^4.4.0"
     },
     "devDependencies": {
@@ -39,11 +43,15 @@
         "lint-staged": "^15.2.7",
         "postcss": "^8.4.40",
         "prettier": "3.3.3",
+        "rollup-plugin-visualizer": "^5.12.0",
         "tailwindcss": "^3.4.7",
         "typescript": "^5.2.2",
         "typescript-eslint": "^7.14.1",
+        "unplugin-auto-import": "^0.18.2",
+        "unplugin-vue-components": "^0.27.3",
         "vite": "^5.3.1",
-        "vite-plugin-vue-devtools": "^7.3.4",
+        "vite-plugin-html": "^3.2.2",
+        "vite-plugin-vue-devtools": "1.0.0-rc.5",
         "vue-tsc": "^2.0.21"
     }
 }

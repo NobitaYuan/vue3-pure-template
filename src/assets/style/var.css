@@ -1,7 +1,9 @@
 /* 普通模式 */
 :root {
+    --background-gray-50: #ffffff;
 }
 
 /* 黑夜模式 */
 :root.dark {
+    --background-gray-50: #1e1e1e;
 }

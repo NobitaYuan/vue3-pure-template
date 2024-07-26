@@ -1,13 +1,13 @@
-import { createApp } from 'vue';
-import './assets/style/main.css';
-import App from './App.vue';
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
-import router from './router';
+import { createApp } from 'vue'
+import './assets/style/main.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
+import App from './App.vue'
+import router from './router'
+import { createPinia } from 'pinia'
+import { i18n } from './i18n'
 
-const app = createApp(App);
-
-app.use(router);
-app.use(ElementPlus);
-app.mount('#app');
+const app = createApp(App)
+app.use(router)
+app.use(createPinia())
+app.use(i18n)
+app.mount('#app')

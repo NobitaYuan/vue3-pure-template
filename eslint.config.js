@@ -1,6 +1,6 @@
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import pluginVue from 'eslint-plugin-vue';
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import pluginVue from 'eslint-plugin-vue'
 
 export default [
     {
@@ -13,7 +13,6 @@ export default [
     },
     ...tseslint.configs.recommended,
     ...pluginVue.configs['flat/essential'],
-    { extends: [] },
     {
         /* 自定义规则
         "off"   或者 0  //关闭规则
@@ -27,4 +26,4 @@ export default [
             'vue/multi-word-component-names': 0, // 组件名必须是多个单词
         },
     },
-];
+]

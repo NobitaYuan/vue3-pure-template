@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ElConfigProvider } from 'element-plus';
-import { zhCn } from 'element-plus/es/locale/index.mjs';
-import { RouterView } from 'vue-router';
+import { ElConfigProvider } from 'element-plus'
+import { zhCn } from 'element-plus/es/locale/index.mjs'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
