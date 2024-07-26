@@ -1,28 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
     {
         path: '/',
         name: '/',
-        redirect: '/index'
+        redirect: '/index',
     },
     {
         path: '/index',
         name: 'index',
         meta: { title: 'Taco' },
-        component: () => import('@/views/index/index.vue')
+        component: () => import('@/views/index/index.vue'),
     },
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         meta: { title: '404' },
-        component: () => import('@/views/error/404View.vue')
-    }
-
-]
+        component: () => import('@/views/error/404View.vue'),
+    },
+];
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes
-})
+    routes,
+});
 
-export default router
+export default router;

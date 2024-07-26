@@ -1,10 +1,10 @@
-import globals from "globals"
-import tseslint from "typescript-eslint"
-import pluginVue from "eslint-plugin-vue"
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
 
 export default [
     {
-        files: ["**/*.{js,mjs,cjs,ts,vue}"],
+        files: ['**/*.{js,mjs,cjs,ts,vue}'],
     },
     {
         languageOptions: {
@@ -12,7 +12,7 @@ export default [
         },
     },
     ...tseslint.configs.recommended,
-    ...pluginVue.configs["flat/essential"],
+    ...pluginVue.configs['flat/essential'],
     {
         /* 自定义规则
         "off"   或者 0  //关闭规则
@@ -21,9 +21,10 @@ export default [
         */
         rules: {
             indent: [1, 4], //缩进风格
-            "@typescript-eslint/no-explicit-any": 0, // 允许使用any
-            "@typescript-eslint/no-unused-vars": 2, //变量声明了但未使用
-            "no-extra-semi": 0, // 不必要的分号
+            '@typescript-eslint/no-explicit-any': 0, // 允许使用any
+            '@typescript-eslint/no-unused-vars': 2, //变量声明了但未使用
+            'no-extra-semi': 0, // 不必要的分号
+            'vue/multi-word-component-names': 0, // 组件名必须是多个单词
         },
     },
-]
+];

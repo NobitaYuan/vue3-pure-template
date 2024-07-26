@@ -99,7 +99,7 @@ video {
     /* 行高都为1,方便布局 */
     line-height: 1;
     /* 字体默认都为平方 */
-    font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
     box-sizing: border-box;
 }
 
@@ -139,7 +139,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
+    content: '';
     content: none;
 }
 
