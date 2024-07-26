@@ -22,7 +22,6 @@ export default [
         */
         rules: {
             indent: [1, 4], //缩进风格
-            '@typescript-eslint/no-explicit-any': 0, // 允许使用any
             '@typescript-eslint/no-unused-vars': 2, //变量声明了但未使用
             'no-extra-semi': 0, // 不必要的分号
             'vue/multi-word-component-names': 0, // 组件名必须是多个单词
