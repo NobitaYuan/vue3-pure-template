@@ -55,6 +55,6 @@ pnpm dev
 
 # 📄 License
 
-<a href="https://opensource.org/license/mit/">MIT</a>
+<a href="https://opensource.org/license/mit/" target="_blank">MIT license.</a>
 
 > Copyright (c) 2024 NobitaYuan

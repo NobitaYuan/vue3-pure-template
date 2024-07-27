@@ -40,5 +40,8 @@ export default defineConfig((env: ConfigEnv) => {
                 '@': '/src',
             },
         },
+        server: {
+            host: true,
+        },
     }
 })
