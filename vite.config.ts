@@ -24,9 +24,11 @@ export default defineConfig((env: ConfigEnv) => {
             }),
             AutoImport({
                 resolvers: [ElementPlusResolver()],
+                dts: 'src/type/auto-imports.d.ts',
             }),
             Components({
                 resolvers: [ElementPlusResolver()],
+                dts: 'src/type/components.d.ts',
             }),
             visualizer({
                 filename: 'boundleView.html', //分析图生成的文件名

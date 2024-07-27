@@ -31,5 +31,8 @@ const stopLangWatch = watch(curLang, (lang) => {
     setLang(lang)
 })
 
+// init
+setLang(getFromLocal(localLangKey))
+
 export { i18n, setLang, curLang, stopLangWatch }
 export type { LangType }
