@@ -18,7 +18,10 @@ const dev = import.meta.env
                 <el-radio :value="'en'" size="large">English</el-radio>
             </el-radio-group>
         </div>
-        <div class="flex items-center gap-4"><ElSwitch :size="'large'" v-model="darkModeStore.isDark"></ElSwitch>{{ $t('darkMode') }}</div>
+        <div class="flex items-center gap-4">
+            <ElSwitch :size="'large'" v-model="darkModeStore.isDark"></ElSwitch>
+            {{ $t('darkMode') }}
+        </div>
         <ElCard :header="'环境变量'">
             <div class="flex flex-col gap-[12px] leading-[1.3]">
                 <div class="flex w-full items-center" v-for="item of Object.entries(dev)" :key="item[0]">
@@ -42,6 +45,7 @@ const dev = import.meta.env
     align-items: center;
     gap: 24px;
     color: var(--el-text-color-primary);
+
     h1 {
         font-size: 40px;
         font-weight: bold;

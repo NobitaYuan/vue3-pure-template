@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
     {
         path: '/',
@@ -17,11 +17,11 @@ const routes = [
         meta: { title: '404' },
         component: () => import('@/views/error/404View.vue'),
     },
-];
+]
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
-});
+})
 
-export default router;
+export default router
