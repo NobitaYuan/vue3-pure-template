@@ -1,6 +1,7 @@
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
+import vueEslintParser from 'vue-eslint-parser'
 
 export default [
     ...tseslint.configs.recommended,
@@ -9,12 +10,13 @@ export default [
     {
         files: ['**/*.{js,mjs,cjs,ts,vue}'],
         languageOptions: {
+            globals: globals.browser,
+            parser: vueEslintParser,
             parserOptions: {
+                parser: '@typescript-eslint/parser',
                 sourceType: 'module',
                 ecmaVersion: 'latest',
-                // project: './tsconfig.json', // 确保指向你的 tsconfig.json 文件
             },
-            globals: globals.browser,
         },
         rules: {
             /* 

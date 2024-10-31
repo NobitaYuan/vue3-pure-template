@@ -1,26 +1,24 @@
 <script lang="ts" setup>
-import { useIntersectionObserver } from '@vueuse/core';
-import { ref } from 'vue';
+import { useIntersectionObserver } from '@vueuse/core'
+import { ref } from 'vue'
 interface IProps {
-    animateCalss?: string; // 配合animate.css使用，效果更佳
-    duration?: string; // 动画持续时间
-    once?: boolean; // 动画是否只播放一次
+    animateCalss?: string // 配合animate.css使用，效果更佳
+    duration?: string // 动画持续时间
+    once?: boolean // 动画是否只播放一次
 }
 const Props = withDefaults(defineProps<IProps>(), {
     animateCalss: 'rise_up',
     duration: '0.5s',
     once: true,
-});
-
-const show = ref(true);
-
-const containerBox = ref<HTMLElement | null>(null);
+})
+const show = ref(true)
+const containerBox = ref<HTMLElement | null>(null)
 const { stop } = useIntersectionObserver(containerBox, ([{ isIntersecting }]) => {
-    show.value = isIntersecting;
+    show.value = isIntersecting
     if (Props.once) {
-        stop();
+        stop()
     }
-});
+})
 </script>
 
 <template>

@@ -2,7 +2,6 @@ import { getFromLocal, saveToLocal } from '@/utils'
 import { createI18n } from 'vue-i18n'
 import zhCn from './locales/zh-cn'
 import en from './locales/en'
-import { toRef, watch } from 'vue'
 
 const localLangKey = 'lang'
 

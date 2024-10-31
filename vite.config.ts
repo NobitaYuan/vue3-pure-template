@@ -23,6 +23,7 @@ export default defineConfig((env: ConfigEnv) => {
                 },
             }),
             AutoImport({
+                imports: ['vue', 'vue-router'],
                 resolvers: [ElementPlusResolver()],
                 dts: 'src/types/auto-imports.d.ts',
             }),
