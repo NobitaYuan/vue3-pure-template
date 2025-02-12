@@ -1,7 +1,7 @@
 import { getFromLocal, saveToLocal } from '@/utils'
 import { createI18n } from 'vue-i18n'
-import zhCn from './locales/zh-cn'
-import en from './locales/en'
+import zhCn from './locales/zh-cn.json'
+import en from './locales/en.json'
 
 const localLangKey = 'lang'
 
@@ -15,7 +15,6 @@ const i18n = createI18n({
 })
 
 type LangType = 'zh-cn' | 'en'
-
 const setLang = (lang: LangType = 'zh-cn') => {
     i18n.global.locale = lang
     saveToLocal(localLangKey, lang)

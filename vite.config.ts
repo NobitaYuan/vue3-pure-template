@@ -24,8 +24,11 @@ export default defineConfig((env: ConfigEnv) => {
             }),
             AutoImport({
                 imports: ['vue', 'vue-router'],
-                resolvers: [ElementPlusResolver()],
                 dts: 'src/types/auto-imports.d.ts',
+                // 生成声明global的.eslintrc-auto-import.json，随后导入eslint防止报错
+                eslintrc: {
+                    enabled: true,
+                },
             }),
             Components({
                 resolvers: [ElementPlusResolver()],
@@ -43,6 +46,15 @@ export default defineConfig((env: ConfigEnv) => {
         },
         server: {
             host: true,
+        },
+        build: {
+            /* 
+            boolean | "hidden" | "inline"
+            配置为 hidden 时，依旧会生成sourcemap文件，但是是隐藏的，需要手动指定文件的路径
+            在控制台进入该文件后，右键添加sourcemap的路径即可，
+            路径就是该文件的请求路径，然后在后缀加上.map即可
+            */
+            sourcemap: true,
         },
     }
 })
