@@ -14,12 +14,10 @@
 > 无冗余功能和过度的封装 🔌
 >
 > 所有功能无需配置，**开箱即用** 📦
->
-> 应付**中小企业级**项目无压力 😎
 
 # ✨ 特点
 
--   [x] 🚀 Vue3 + TypeScript5 + Vite5 构建
+-   [x] 🚀 Vue3 + TypeScript5 + Rolldown-Vite 构建
 -   [x] 🎀 Eslint + Prettier 代码规范化
 -   [x] 📝 集成 Commitizen、cz-git，Git提交信息规范化
 -   [x] ⬆️ 集成 Husky、lint-staged，提交代码自动格式化
@@ -41,20 +39,16 @@
 git clone https://github.com/NobitaYuan/vue3-pure-template.git
 # 安装依赖
 pnpm i
-# 启动就完事了~
+# 启动
 pnpm dev
 ```
 
 # 💬 一些话
 
-所有工具的选择和配置方式皆是来自本人工作中积累的浅薄的**经验和实践**，可能附带了些主观倾向，但在这繁荣又繁杂的前端生态圈，个人认为算是比较舒适的工程化项目模板了
-
-> 话说啥时候前端能和Java一样，来一波Spring的大一统？
-
-欢迎交流~
+没有最好的工具，只有最适合你的
 
 # 📄 License
 
 <a href="https://opensource.org/license/mit/" target="_blank">MIT license.</a>
 
-> Copyright (c) 2024 NobitaYuan
+> Copyright (c) 2025 NobitaYuan
