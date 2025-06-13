@@ -13,23 +13,24 @@ const dev = import.meta.env
             <h1>{{ $t('proTitle') }}</h1>
         </viewport_animation>
         <div>
-            <el-radio-group v-model="curLang">
-                <el-radio :value="'zh-cn'" size="large">中文</el-radio>
-                <el-radio :value="'en'" size="large">English</el-radio>
-            </el-radio-group>
+            <t-radio-group v-model="curLang">
+                <t-radio :value="'zh-cn'" size="large">中文</t-radio>
+                <t-radio :value="'en'" size="large">English</t-radio>
+            </t-radio-group>
         </div>
         <div class="flex items-center gap-4">
-            <ElSwitch :size="'large'" v-model="darkModeStore.isDark"></ElSwitch>
+            <t-switch :size="'large'" v-model="darkModeStore.isDark"></t-switch>
             {{ $t('darkMode') }}
         </div>
-        <ElCard :header="'环境变量'">
+
+        <t-card :header="'环境变量'">
             <div class="flex flex-col gap-[12px] leading-[1.3]">
                 <div class="flex w-full items-center" v-for="item of Object.entries(dev)" :key="item[0]">
                     <label class="w-[200px] text-[13px]">{{ item[0] }}：</label>
                     <div class="text-[18px]">{{ item[1] }}</div>
                 </div>
             </div>
-        </ElCard>
+        </t-card>
     </div>
 </template>
 

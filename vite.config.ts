@@ -4,7 +4,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver, TDesignResolver } from 'unplugin-vue-components/resolvers'
+import { TDesignResolver } from 'unplugin-vue-components/resolvers'
 import { createHtmlPlugin } from 'vite-plugin-html'
 
 export default defineConfig((env: ConfigEnv) => {
@@ -32,7 +32,6 @@ export default defineConfig((env: ConfigEnv) => {
             }),
             Components({
                 resolvers: [
-                    ElementPlusResolver(),
                     TDesignResolver({
                         library: 'vue-next',
                     }),

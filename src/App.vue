@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ElConfigProvider } from 'element-plus'
-import { zhCn } from 'element-plus/es/locale/index.mjs'
+import { TdConfigProviderProps } from 'tdesign-vue-next'
 import { RouterView } from 'vue-router'
+import zh_CN_Config from 'tdesign-vue-next/es/locale/zh_CN'
+const globalConfig = { ...zh_CN_Config } as unknown as TdConfigProviderProps['globalConfig']
 </script>
 
 <template>
-    <el-config-provider :locale="zhCn">
+    <t-config-provider :global-config="globalConfig">
         <RouterView v-slot="{ Component, route }">
             <transition :mode="'out-in'" enter-active-class="animate__animated animate__fadeInDown" leave-active-class="animate__animated animate__fadeOutUp">
                 <keep-alive>
@@ -13,7 +14,7 @@ import { RouterView } from 'vue-router'
                 </keep-alive>
             </transition>
         </RouterView>
-    </el-config-provider>
+    </t-config-provider>
 </template>
 
 <style lang="scss" scoped>
