@@ -12,39 +12,46 @@ const autoimportConfig = JSON.parse(readFileSync(resolve(__dirname, './.eslintrc
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {
-        files: ['**/*.{js,mjs,cjs,ts,vue}'],
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,ts,vue,tsx}'],
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...autoimportConfig.globals,
+      },
     },
-    {
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...autoimportConfig.globals,
-            },
+  },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...pluginVue.configs['flat/essential'],
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        ecmaFeatures: {
+          jsx: true,
         },
+      },
     },
-    pluginJs.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...pluginVue.configs['flat/essential'],
-    {
-        files: ['**/*.vue'],
-        languageOptions: {
-            parserOptions: {
-                parser: tseslint.parser,
-            },
-        },
-    },
-    {
-        rules: {
-            /* 
+  },
+  {
+    rules: {
+      /* 
          "off"   或者 0  //关闭规则
          "warn"  或者 1  //把规则作为警告（不影响退出代码）
          "error" 或者 2  //把规则作为错误（退出代码触发时为1）
          */
-            indent: [1, 4], //缩进风格
-            '@typescript-eslint/no-unused-vars': 2, //变量声明了但未使用
-            'no-extra-semi': 2, // 不必要的分号
-            'vue/multi-word-component-names': 0, // 组件名必须是多个单词
-        },
+      // indent: [1, 2], //缩进风格
+      '@typescript-eslint/no-unused-vars': 2, //变量声明了但未使用
+      'no-extra-semi': 2, // 不必要的分号
+      'vue/multi-word-component-names': 0, // 组件名必须是多个单词
+      'vue/require-v-for-key': 0, // v-for必须绑定key
+      '@typescript-eslint/ban-ts-comment': 0, // 允许使用ts-注释
+      '@typescript-eslint/no-explicit-any': 0,
+      'prefer-rest-params': 0, // 允许使用arguments
     },
+  },
 ]

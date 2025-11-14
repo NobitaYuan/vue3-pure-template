@@ -1,9 +1,14 @@
 /* 普通模式 */
 :root {
-    --background-gray-50: #ffffff;
+  /* 顶部栏高度 */
+  --topbar-h: 54px;
+  /* 侧边宽度 */
+  --sidebar-w: 300px;
+  --layout-bg: #eeeeee;
+  --td-font-body-medium: var(--td-font-body-small);
 }
 
 /* 黑夜模式 */
 :root.dark {
-    --background-gray-50: #1e1e1e;
+  --layout-bg: #494848;
 }
