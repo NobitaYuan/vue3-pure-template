@@ -30,6 +30,7 @@
 - [x] ️🌐 i18n 国际化
 - [x] 🌗 主题 明/暗 模式
 - [x] 🏞️ 配置 env 环境变量，区分开发、测试、生产环境
+- [x] 🔐 路由权限控制（默认关闭，取消 `src/main.ts` 中的注释即可启用，基础实现适配 RuoYi，可按需扩展）
 - [ ] 🎛 more...
 
 # 🚀 快速开始
@@ -51,4 +52,4 @@ pnpm dev
 
 <a href="https://opensource.org/license/mit/" target="_blank">MIT license.</a>
 
-> Copyright (c) 2025 NobitaYuan
+> Copyright (c) 2026 NobitaYuan
