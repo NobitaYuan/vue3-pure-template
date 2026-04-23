@@ -12,6 +12,18 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/index/index.vue'),
   },
   {
+    path: '/data',
+    name: 'data',
+    meta: { title: '数据管理' },
+    component: () => import('@/views/data/index.vue'),
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    meta: { title: '系统设置' },
+    component: () => import('@/views/settings/index.vue'),
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     meta: { title: '404' },

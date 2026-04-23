@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/NobitaYuan/vue3-pure-template" target="_blank">V3Pure - 纯净的 Vue3 快速启动模板</a>
+  <a href="https://github.com/NobitaYuan/vue3-pure-template" target="_blank">V3Pure - 纯净的 Vue3 现代化快速启动模板</a>
 </h1>
 
 ```

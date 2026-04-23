@@ -1,10 +1,8 @@
 <script lang="ts" setup>
 const navList = [
-  { name: '项目管理', path: '/project', icon: 'app' },
-  { name: '体系架构设计', path: '/architectureDesign', icon: 'system-2' },
-  { name: '建模知识库', path: '/knowledgelib', icon: 'system-coordinate' },
-  { name: '体系框架库', path: '/framewokLib', icon: 'system-application' },
-  { name: '模型库', path: '/modelLib', icon: 'system-components' },
+  { name: '示例页面', path: '/index', icon: 'app' },
+  { name: '数据管理', path: '/data', icon: 'server' },
+  { name: '系统设置', path: '/settings', icon: 'setting' },
 ]
 
 const route = useRoute()
