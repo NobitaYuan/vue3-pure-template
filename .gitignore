@@ -21,7 +21,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# 
+# Auto-generated
 auto-imports.d.ts
 components.d.ts
-.eslintrc-auto-import.jsontsconfig.tsbuildinfo
+.eslintrc-auto-import.json
+tsconfig.tsbuildinfo
+stats.html

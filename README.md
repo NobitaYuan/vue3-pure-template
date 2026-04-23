@@ -17,20 +17,20 @@
 
 # ✨ 特点
 
--   [x] 🚀 Vue3 + TypeScript5 + Rolldown-Vite 构建
--   [x] 🎀 Eslint + Prettier 代码规范化
--   [x] 📝 集成 Commitizen、cz-git，Git提交信息规范化
--   [x] ⬆️ 集成 Husky、lint-staged，提交代码自动格式化
--   [x] ⚙️ Vue DevTools集成，Vue专属的下一代高效的多功能开发工具
--   [x] 💼 Rollup-plugin-visualizer，打包体积分析
--   [x] ✨ Element-plus 自动化导入
--   [x] ☁️ Tailwind CSS
--   [x] 🛠️ VueUse
--   [x] 🔗 Axios
--   [x] ️🌐 i18n 国际化
--   [x] 🌗 主题 明/暗 模式
--   [x] 🏞️ 配置 env 环境变量，区分开发、测试、生产环境
--   [ ] 🎛 more...
+- [x] 🚀 Vue3 + TypeScript6 + Vite 8 构建
+- [x] 🎀 Eslint + Prettier 代码规范化
+- [x] 📝 集成 Commitizen、cz-git，Git提交信息规范化
+- [x] ⬆️ 集成 Husky、lint-staged，提交代码自动格式化
+- [x] ⚙️ Vue DevTools集成，Vue专属的下一代高效的多功能开发工具
+- [x] 💼 Rollup-plugin-visualizer，打包体积分析
+- [x] ✨ TDesign 自动化导入
+- [x] ☁️ Tailwind CSS
+- [x] 🛠️ VueUse
+- [x] 🔗 Axios
+- [x] ️🌐 i18n 国际化
+- [x] 🌗 主题 明/暗 模式
+- [x] 🏞️ 配置 env 环境变量，区分开发、测试、生产环境
+- [ ] 🎛 more...
 
 # 🚀 快速开始
 

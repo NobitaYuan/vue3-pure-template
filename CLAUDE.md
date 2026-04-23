@@ -41,7 +41,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### 技术栈
 
 - **Runtime**: Vue 3.5 + TypeScript（`<script setup lang="ts">`）
-- **构建工具**: rolldown-vite（Vite 兼容）
+- **构建工具**: Vite 8（内置 Rolldown + Oxc）
 - **UI 框架**: TDesign Vue Next 1.13（主要，组件自动导入）
 - **样式**: Tailwind CSS 3.4 + SCSS + CSS Variables
 - **路由**: Vue Router 4.5（createWebHistory）
