@@ -1,30 +1,29 @@
 {
-    "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "jsx": "preserve",
-        "jsxImportSource": "vue",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "allowSyntheticDefaultImports": true,
-        "lib": ["esnext", "dom"],
-        "types": ["vite/client"],
-        "noEmit": true,
-        "baseUrl": "./",
-        "paths": {
-            "@/*": ["src/*"]
-        },
-        "noImplicitAny": true,
-        "strictFunctionTypes": true,
-        "strictBindCallApply": true,
-        "noImplicitThis": true,
-        "alwaysStrict": true,
-        "incremental": true
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client"],
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"]
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "node_modules/tdesign-vue-next/global.d.ts"],
-    "exclude": ["node_modules", "dist"],
-    "compileOnSave": false
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "incremental": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "node_modules/tdesign-vue-next/global.d.ts"],
+  "exclude": ["node_modules", "dist"],
+  "compileOnSave": false
 }

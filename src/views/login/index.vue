@@ -32,11 +32,12 @@ const rules: FormProps['rules'] = {
     },
   ],
 }
-const formRef = ref<FormInstanceFunctions>(null)
+const formRef = ref<FormInstanceFunctions | null>(null)
 
 const isLoading = ref(false)
 const loginFn = async () => {
   isLoading.value = true
+  if (!formRef.value) return
   try {
     const res1 = await formRef.value.validate()
     if (res1 !== true) return

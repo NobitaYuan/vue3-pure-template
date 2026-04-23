@@ -1,27 +1,27 @@
 const ls = window.localStorage
 
 const saveToLocal = (key: string, value: unknown) => {
-    ls.setItem(key, JSON.stringify(value))
+  ls.setItem(key, JSON.stringify(value))
 }
 
 const getFromLocal = (key: string) => {
-    const val = ls.getItem(key)
-    if (val) {
-        try {
-            return JSON.parse(val)
-        } catch (error) {
-            return val
-        }
+  const val = ls.getItem(key)
+  if (val) {
+    try {
+      return JSON.parse(val)
+    } catch {
+      return val
     }
-    return undefined
+  }
+  return undefined
 }
 
 const removeFromLocal = (key: string) => {
-    ls.removeItem(key)
+  ls.removeItem(key)
 }
 
 const clearLocal = () => {
-    ls.clear()
+  ls.clear()
 }
 
 export { saveToLocal, getFromLocal, removeFromLocal, clearLocal }

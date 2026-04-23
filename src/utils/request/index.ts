@@ -34,7 +34,7 @@ service.interceptors.request.use(
     // 设置时间戳
     config.headers['Ts'] = new Date().getTime()
     // get请求映射params参数
-    if (['get', 'post'].includes(config.method) && config.params) {
+    if (config.method && ['get', 'post'].includes(config.method) && config.params) {
       let url = config.url + '?' + transParams(config.params)
       url = url.slice(0, -1)
       config.params = {}
