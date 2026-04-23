@@ -68,7 +68,7 @@ export default defineConfig((env: ConfigEnv) => {
       },
     },
     build: {
-      /* 
+      /*
             boolean | "hidden" | "inline"
             配置为 hidden 时，依旧会生成sourcemap文件，但是是隐藏的，需要手动指定文件的路径
             在控制台进入该文件后，右键添加sourcemap的路径即可，

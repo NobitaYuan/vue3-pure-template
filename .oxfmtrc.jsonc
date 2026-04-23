@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // 对应 prettier 的 printWidth
+  "printWidth": 160,
+  // 对应 prettier 的 tabWidth
+  "tabWidth": 2,
+  // 对应 prettier 的 semi
+  "semi": false,
+  // 对应 prettier 的 singleQuote
+  "singleQuote": true,
+  // 对应 .prettierignore
+  "ignorePatterns": ["node_modules", "build", "coverage", "dist"],
+}
