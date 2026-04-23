@@ -18,7 +18,7 @@
 # ✨ 特点
 
 - [x] 🚀 Vue3 + TypeScript6 + Vite 8 构建
-- [x] 🎀 Eslint + Prettier 代码规范化
+- [x] 🎀 Oxlint + Oxfmt 代码规范化（基于 Oxc，Rust 实现）
 - [x] 📝 集成 Commitizen、cz-git，Git提交信息规范化
 - [x] ⬆️ 集成 Husky、lint-staged，提交代码自动格式化
 - [x] ⚙️ Vue DevTools集成，Vue专属的下一代高效的多功能开发工具
@@ -45,7 +45,7 @@ pnpm dev
 
 # 💬 一些话
 
-没有最好的工具，只有最适合你的
+没有最好的工具，只有最适合场景的
 
 # 📄 License
 

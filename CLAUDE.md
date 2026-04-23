@@ -13,20 +13,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 当接手此项目时，**必须遵守以下核心约定**：
 
-| 场景              | 详细说明                      |
-| ----------------- | ----------------------------- |
-| 创建新页面        | [查看](#1-创建新页面)         |
-| 环境判断          | [查看](#2-环境判断)           |
-| LocalStorage 操作 | [查看](#3-localstorage的操作) |
-| Token 管理        | [查看](#4-token-管理)         |
-| HTTP 请求         | [查看](#5-http-请求)          |
-| UI 组件           | [查看](#6-ui-组件选择)        |
-| 导入路径          | [查看](#7-导入路径规范)       |
-| 代码注释          | [查看](#8-代码注释)           |
-| API 接口编写      | [查看](#9-api-接口编写规范)   |
-| 组件 API 接入     | [查看](#10-组件-api-接入规范) |
-| 状态管理          | [查看](#11-状态管理pinia)     |
-| 自动导入          | [查看](#12-自动导入)          |
+| 场景              | 详细说明                                                     |
+| ----------------- | ------------------------------------------------------------ |
+| 创建新页面        | [查看](#1-创建新页面)                                        |
+| 环境判断          | [查看](#2-环境判断)                                          |
+| LocalStorage 操作 | [查看](#3-localstorage的操作)                                |
+| Token 管理        | [查看](#4-token-管理)                                        |
+| HTTP 请求         | [查看](#5-http-请求)                                         |
+| UI 组件           | [查看](#6-ui-组件选择)                                       |
+| 导入路径          | [查看](#7-导入路径规范)                                      |
+| 代码注释          | [查看](#8-代码注释)                                          |
+| API 接口编写      | [查看](#9-api-接口编写规范)                                  |
+| 组件 API 接入     | [查看](#10-组件-api-接入规范)                                |
+| 状态管理          | [查看](#11-状态管理pinia)                                    |
+| 自动导入          | [查看](#12-自动导入)                                         |
+| Lint & 格式化     | Oxlint + Oxfmt，配置文件 `.oxlintrc.json` / `.oxfmtrc.jsonc` |
 
 当识别到上述场景时，严格执行详细说明中的规范。
 
@@ -42,6 +43,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Runtime**: Vue 3.5 + TypeScript（`<script setup lang="ts">`）
 - **构建工具**: Vite 8（内置 Rolldown + Oxc）
+- **代码规范**: Oxlint（Lint）+ Oxfmt（格式化），基于 Oxc（Rust 实现）
 - **UI 框架**: TDesign Vue Next 1.13（主要，组件自动导入）
 - **样式**: Tailwind CSS 3.4 + SCSS + CSS Variables
 - **路由**: Vue Router 4.5（createWebHistory）
@@ -58,11 +60,12 @@ pnpm dev          # 启动开发服务器
 pnpm build-dev    # 构建 development
 pnpm build-test   # 构建 test
 pnpm build-pro    # 构建 production
-pnpm lint         # 代码检查
-pnpm lint:fix     # 代码检查并修复
+pnpm lint         # 代码检查（Oxlint）
+pnpm lint:fix     # 代码检查并修复（Oxlint）
+pnpm format       # 代码格式化（Oxfmt）
 ```
 
-**注意**: 不要使用 npm 或 yarn。代码格式化通过 husky + lint-staged 在提交时自动执行。
+**注意**: 不要使用 npm 或 yarn。代码格式化和 lint 通过 husky + lint-staged 在提交时自动执行（Oxfmt + Oxlint）。
 
 ---
 

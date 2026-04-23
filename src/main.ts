@@ -6,7 +6,7 @@ import 'tdesign-vue-next/es/style/index.css'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 // 权限控制
-import '@/router/permission'
+// import '@/router/permission'
 
 // 线上环境自动更新
 import { autoUpadte } from '@/utils/autoUpdate'

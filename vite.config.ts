@@ -15,7 +15,7 @@ export default defineConfig((env: ConfigEnv) => {
   // 环境变量
   const { VITE_APP_TITLE, VITE_APP_BASE_API_URL } = envVar
   const IP = {
-    test: 'http://120.53.11.108:8999',
+    test: 'http://xxx.xxx.xxx.xxx:8999',
   }
   return {
     plugins: [
@@ -32,10 +32,6 @@ export default defineConfig((env: ConfigEnv) => {
       AutoImport({
         imports: ['vue', 'vue-router'],
         dts: 'src/types/auto-imports.d.ts',
-        // 生成声明global的.eslintrc-auto-import.json，随后导入eslint防止报错
-        eslintrc: {
-          enabled: true,
-        },
       }),
       Components({
         resolvers: [

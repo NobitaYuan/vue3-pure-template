@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "vue"],
+  "categories": {
+    "correctness": "warn"
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {},
+  "rules": {
+    "typescript/no-unused-vars": "error",
+    "typescript/ban-ts-comment": "off",
+    "typescript/no-explicit-any": "off"
+  },
+  "ignorePatterns": ["node_modules", "dist", "build", "coverage"]
+}
