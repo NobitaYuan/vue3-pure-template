@@ -15,7 +15,7 @@ export default defineConfig((env: ConfigEnv) => {
   // 环境变量
   const { VITE_APP_TITLE, VITE_APP_BASE_API_URL } = envVar
   const IP = {
-    test: 'http://xxx.xxx.xxx.xxx:8999',
+    test: 'http://localhost:3000',
   }
   return {
     plugins: [
@@ -55,6 +55,7 @@ export default defineConfig((env: ConfigEnv) => {
       proxy: {
         [VITE_APP_BASE_API_URL]: {
           target: IP.test,
+          changeOrigin: true,
           configure: (proxy, options) => {
             proxy.on('proxyReq', (proxyReq, req) => {
               console.log(`[Proxy Url] ${req.method} ${req.url} -> ${options.target}${req.url}`)

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { loginParams } from '@/api/user'
 import { useUserStore } from '@/stores/useUserStore'
 import { isDev } from '@/utils/isDev'
 import { FormInstanceFunctions, FormProps, MessagePlugin } from 'tdesign-vue-next'
@@ -10,8 +9,13 @@ const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
 
+interface LoginForm {
+  username: string
+  password: string
+}
+
 // 表单内容
-const formData = ref<loginParams>({
+const formData = ref<LoginForm>({
   username: '',
   password: '',
 })
@@ -41,8 +45,7 @@ const loginFn = async () => {
   try {
     const res1 = await formRef.value.validate()
     if (res1 !== true) return
-    await userStore.login(formData.value)
-    await userStore.getUserInfo()
+    await userStore.login(formData.value.username, formData.value.password)
     MessagePlugin.success('登录成功')
     const redirect = route.query.redirect as string
     const toUrl = redirect ? decodeURIComponent(redirect) : '/'

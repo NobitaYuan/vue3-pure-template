@@ -1,15 +1,16 @@
 import { defineStore } from 'pinia'
-import { getToken, userInfoKey, userTokenKey } from '@/utils/localStorage/token'
+import { getToken, setToken, userInfoKey, userTokenKey } from '@/utils/localStorage/token'
 import { clearLocal, getFromLocal } from '@/utils'
-import { getUserInfo, login, loginParams, userInfo } from '@/api/user'
+import * as serverUserApi from '@/api/server/user'
 
-const InitUserInfo: userInfo = {
-  isDefaultModifyPwd: false,
-  isPasswordExpired: false,
-  permissions: [],
-  roles: [],
-  // @ts-ignore
-  user: {},
+interface UserInfo {
+  id: string
+  username: string
+}
+
+const InitUserInfo: UserInfo = {
+  id: '',
+  username: '',
 }
 
 // 用户信息store
@@ -21,7 +22,7 @@ export const useUserStore = defineStore('userStore', {
   }),
   getters: {
     userName(state) {
-      return state.info?.user?.nickName || ''
+      return state.info?.username || ''
     },
     userToken(state) {
       return state.token
@@ -31,16 +32,19 @@ export const useUserStore = defineStore('userStore', {
     },
   },
   actions: {
-    async login(params: loginParams) {
-      const res = await login(params)
-      this.token = res.data.token
-      return res
-    },
-    async getUserInfo() {
-      const res = await getUserInfo()
-      this.info = res.data
+    async login(username: string, password: string) {
+      const { data, error } = await serverUserApi.login(username, password)
+      if (error || !data) throw error
+      this.token = data.data.accessToken
+      setToken(data.data.accessToken)
+      this.info = data.data.user
       this.hasUserInfo = true
-      return res
+    },
+    async getUserInfo(userId: string) {
+      const { data, error } = await serverUserApi.getUser(userId)
+      if (error || !data) throw error
+      this.info = data.data
+      this.hasUserInfo = true
     },
     logout(reload: boolean = false) {
       this.token = ''
@@ -55,12 +59,10 @@ export const useUserStore = defineStore('userStore', {
   // 持久化 token 和 userInfo
   persist: [
     {
-      key: userTokenKey, // 存储在localStorage中的key
-      pick: ['token'], // 从state中取的属性的key
+      key: userTokenKey,
+      pick: ['token'],
       serializer: {
-        // 存储时的序列化
         serialize: (value) => value.token,
-        // 读取时的反序列化
         deserialize: (value) => {
           return JSON.parse(value)
         },
@@ -81,6 +83,6 @@ export const useUserStore = defineStore('userStore', {
   ],
 })
 
-const getUserInitInfo = (): userInfo => {
+const getUserInitInfo = (): UserInfo => {
   return getFromLocal(userInfoKey) || { ...InitUserInfo }
 }
