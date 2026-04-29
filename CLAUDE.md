@@ -1,7 +1,5 @@
 # CLAUDE.md
 
-Use 'bd' for task tracking
-
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 > 运用第一性原理 思考，拒绝经验主义和路径盲从，不要假设我完全清楚目标，保持审慎，从原始需求和问题出发
@@ -57,6 +55,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 pnpm i            # 安装依赖（必须用 pnpm）
 pnpm dev          # 启动开发服务器
+pnpm generate:api # 从后端 openapi.json 生成 TypeScript 类型（src/api/generated/api.d.ts）
 pnpm build-dev    # 构建 development
 pnpm build-test   # 构建 test
 pnpm build-pro    # 构建 production
@@ -73,7 +72,13 @@ pnpm format       # 代码格式化（Oxfmt）
 
 ```
 src/
-├── api/user/                  # API 模块（type.ts + index.ts）
+├── api/
+│   ├── generated/              # 自动生成（勿手动编辑）
+│   │   ├── api.d.ts            # openapi-typescript 生成的类型
+│   │   └── client.ts           # openapi-fetch 客户端（含 auth 中间件）
+│   ├── user/                 # 类型安全的 API 函数（openapi-fetch，新模块用这个）
+│   │   └── user.ts
+│   └── user/                   # 旧 axios API（遗留代码，不新增）
 ├── assets/
 │   ├── images/
 │   └── style/                 # main.css, tailwind.css, var.css, reset.css
@@ -185,29 +190,57 @@ import { getToken, setToken, clearUserToken, clearAllLocalStorage } from '@/util
 
 ### 5. HTTP 请求
 
-**从 `@/utils/request` 导入，不要直接用 axios 或 fetch：**
+项目有两种 API 客户端，**新模块必须使用 OpenAPI 方案**：
+
+#### 方案 A：OpenAPI 类型安全（推荐，新模块必须用）
+
+```typescript
+import { client } from '@/api/generated/client'
+
+// GET 带查询参数
+const { data, error } = await client.GET('/api/v1/users', {
+  params: { query: { page: 1, size: 20 } },
+})
+
+// GET 带路径参数
+const { data, error } = await client.GET('/api/v1/users/{id}', {
+  params: { path: { id: '123' } },
+})
+
+// POST 带 body
+const { data, error } = await client.POST('/api/v1/auth/login', {
+  body: { username: 'admin', password: '123456' },
+})
+
+// PATCH 带路径参数 + body
+const { data, error } = await client.PATCH('/api/v1/users/{id}', {
+  params: { path: { id: '123' } },
+  body: { username: 'newName' },
+})
+
+// DELETE 带路径参数
+const { data, error } = await client.DELETE('/api/v1/users/{id}', {
+  params: { path: { id: '123' } },
+})
+```
+
+特性：路径和参数完全类型检查、自动 Bearer token、401 自动登出、业务错误自动 MessagePlugin 提示
+
+**响应结构**：`{ data, error }` — 成功时 `data` 为 `{ code, message, data }` ，失败时 `error` 有值
+
+**不要设 baseUrl**：OpenAPI spec 中的路径已包含 `/api/v1` 前缀
 
 ```typescript
 import request from '@/utils/request'
 
-// 基本请求
+// 仅用于已存在的 src/api/user/ 等旧代码
 const res = await request<UserInfo>({
   url: '/user/getInfo',
   method: 'get',
 })
-
-// 不需要 token
-const res = await request({
-  url: '/public/data',
-  headers: { isToken: false },
-  method: 'get',
-})
-// 禁用防重复提交：headers: { repeatSubmit: false }
 ```
 
-特性：自动 Bearer token、MessagePlugin 错误提示、防重复提交、401 自动登出
-
-**返回类型：** `Result<T> { code, msg, data, rows, total }`
+**返回类型：** `Result<T> { code, msg, data, rows, total }`。不用于新模块。
 
 ### 6. UI 组件选择
 
@@ -250,30 +283,69 @@ import headerView from './header.vue'
 
 ### 9. API 接口编写规范
 
+**新模块必须在 `src/api/server/` 下创建，使用 openapi-fetch 类型安全方案。**
+
+#### 目录结构
+
 ```
-src/api/yourModule/
-├── type.ts       # 只定义响应类型
-└── index.ts      # API 函数，请求参数用 Partial<T>
+src/api/server/<module>.ts      # 一个文件搞定，类型由 OpenAPI spec 自动生成
 ```
+
+不需要手写 `type.ts` — 类型从后端 `openapi.json` 自动推导。
+
+#### 写法模板
 
 ```typescript
-// type.ts - ✅ 只定义响应类型，❌ 不定义 DTO
-export interface UserResponse {
-  id: string
-  username: string
-  nickName: string
+// src/api/server/post.ts
+import { client } from '../generated/client'
+
+/** 创建帖子 */
+export function createPost(data: { title: string; content: string }) {
+  return client.POST('/api/v1/posts', { body: data })
 }
 
-// index.ts - 请求参数用 Partial<T>
-export function createUser(data: Partial<UserResponse>) {
-  return request<UserResponse>({ url: '/user/create', method: 'post', data })
+/** 帖子列表（分页） */
+export function getPostList(params?: { page?: number; size?: number }) {
+  return client.GET('/api/v1/posts', { params: { query: params } })
 }
 
-// URL 不需要 /api 前缀，baseURL 已配置
-// request 已自动处理数据提取：const res = await getUsers() 直接就是数据
+/** 帖子详情 */
+export function getPost(id: string) {
+  return client.GET('/api/v1/posts/{id}', { params: { path: { id } } })
+}
+
+/** 更新帖子 */
+export function updatePost(id: string, data: { title?: string; content?: string }) {
+  return client.PATCH('/api/v1/posts/{id}', { params: { path: { id } }, body: data })
+}
+
+/** 删除帖子 */
+export function deletePost(id: string) {
+  return client.DELETE('/api/v1/posts/{id}', { params: { path: { id } } })
+}
 ```
 
-参考：`src/api/user/`
+#### 参数写法速查
+
+| 类型 | 写法                                   |
+| ---- | -------------------------------------- |
+| 查询 | `params: { query: { page: 1 } }`       |
+| 路径 | `params: { path: { id: '123' } }`      |
+| Body | `body: { title: 'xxx' }`               |
+| 混合 | `params: { path: { id } }, body: data` |
+
+**路径必须与 OpenAPI spec 完全一致** — 写错会编译报红。运行 `pnpm generate:api` 更新类型。
+
+#### 前后端协作流程
+
+```
+后端修改 API → pnpm export-spec（后端）→ 更新 openapi.json
+→ pnpm generate:api（前端）→ 更新 src/api/generated/api.d.ts
+```
+
+后端新增模块后，前端需要：1) 拉取最新 openapi.json → 2) `pnpm generate:api` → 3) 在 `src/api/server/` 新建对应文件
+
+参考：`src/api/server/user.ts`
 
 ### 10. 组件 API 接入规范
 
@@ -285,10 +357,11 @@ const data = ref<YourType[]>([])
 
 // 查询
 const fetchData = async () => {
+  loading.value = true
   try {
-    loading.value = true
-    const response = await getList()
-    data.value = response.data
+    const { data: res, error } = await getList()
+    if (error) return // client 中间件已自动弹 MessagePlugin
+    data.value = res!.data
   } finally {
     loading.value = false
   }
@@ -299,9 +372,10 @@ onMounted(() => fetchData())
 const handleAction = async () => {
   loading.value = true
   try {
-    await someApiCall(/* 数据 */)
-    await fetchData() // 统一刷新
+    const { error } = await someApiCall(/* 数据 */)
+    if (error) return
     MessagePlugin.success('成功')
+    await fetchData() // 统一刷新
   } finally {
     loading.value = false
   }
@@ -311,8 +385,8 @@ const handleAction = async () => {
 **核心原则：**
 
 1. `loading.value` 统一管理，try-finally 确保重置
-2. 不用 catch — request 已自动处理错误并显示 MessagePlugin
-3. 修改/删除后统一 `fetchData()` 刷新，禁止手动 push/filter
+2. 用 `{ data, error }` 解构 — `error` 有值时 return（client 中间件已弹错误提示）
+3. 成功时手动 `MessagePlugin.success()`，修改/删除后统一 `fetchData()` 刷新，禁止手动 push/filter
 4. 使用 `ref()` 包装状态，`.value` 访问修改
 
 ### 11. 状态管理(Pinia)

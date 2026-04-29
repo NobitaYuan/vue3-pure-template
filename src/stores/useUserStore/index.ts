@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { getToken, setToken, userInfoKey, userTokenKey } from '@/utils/localStorage/token'
 import { clearLocal, getFromLocal } from '@/utils'
-import * as serverUserApi from '@/api/server/user'
+import * as serverUserApi from '@/api/user/user'
 
 interface UserInfo {
   id: string
